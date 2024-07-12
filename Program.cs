@@ -18,12 +18,12 @@ namespace Snake
 
         private static Direction currentMovement = Direction.Right;
 
-        private static bool gameover = false;
+        private static bool gameOver = false;
 
         static void Main()
         {
             InitializeGame();
-            while (!gameover)
+            while (!gameOver)
             {
                 Clear();
                 DrawBorder();
@@ -43,7 +43,7 @@ namespace Snake
 
         static void CheckCollisions()
         {
-            gameover |= (head.XPos == WindowWidth - 1 || head.XPos == 0 || head.YPos == WindowHeight - 1 || head.YPos == 0);
+            gameOver |= (head.XPos == WindowWidth - 1 || head.XPos == 0 || head.YPos == WindowHeight - 1 || head.YPos == 0);
 
             if (berry.XPos == head.XPos && berry.YPos == head.YPos)
             {
@@ -53,7 +53,7 @@ namespace Snake
 
             foreach (var segment in body)
             {
-                gameover |= (segment.XPos == head.XPos && segment.YPos == head.YPos);
+                gameOver |= (segment.XPos == head.XPos && segment.YPos == head.YPos);
                 DrawPixel(segment);
             }
 
